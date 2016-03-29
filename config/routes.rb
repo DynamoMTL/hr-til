@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/admin' => redirect('/auth/google_oauth2')
   get '/auth/google_oauth2', as: 'google_oauth2'
   get '/auth/google_oauth2/callback', to: 'sessions#create'
+  get '/.well-known/acme-challenge/:id' => 'pages#letsencrypt'
 
   get 'account/signout', to: 'sessions#destroy'
   get '/posts_drafts', to: 'posts#drafts', as: :drafts
